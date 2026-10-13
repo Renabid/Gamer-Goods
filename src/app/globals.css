@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #0d0f17; /* Deep dark charcoal/obsidian */
+    --foreground: #f3f4f6; /* Crisp off-white */
+    --card: #151824; /* Elevated slate-charcoal */
+    --card-hover: #1c2132;
+    --border: #23293d; /* Subtle border */
+    --accent-purple: #8b5cf6; /* Electric purple */
+    --accent-purple-glow: rgba(139, 92, 246, 0.25);
+    --accent-cyan: #06b6d4; /* Subtle cyan highlight */
+    --accent-cyan-glow: rgba(6, 182, 212, 0.25);
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    min-height: 100vh;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Custom design system utility classes */
+.gamer-glow-purple {
+  box-shadow: 0 0 25px -5px rgba(139, 92, 246, 0.35);
+}
+
+.gamer-glow-cyan {
+  box-shadow: 0 0 25px -5px rgba(6, 182, 212, 0.35);
+}
+
+.gamer-border-gradient {
+  border-image: linear-gradient(to right, #8b5cf6, #06b6d4) 1;
+}
+
+.bg-charcoal-dark {
+  background-color: #0d0f17;
+}
+
+.bg-charcoal-surface {
+  background-color: #151824;
+}
+
+.bg-charcoal-elevated {
+  background-color: #1d2233;
+}
+
+.border-charcoal-border {
+  border-color: #242b3e;
+}
+
+.text-electric-purple {
+  color: #a78bfa;
+}
+
+.text-subtle-cyan {
+  color: #22d3ee;
 }
