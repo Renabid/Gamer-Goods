@@ -341,8 +341,8 @@ export function AdminCategoryManager({
 
       {/* Create / Edit Modal Dialog */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#151824] border border-[#242b3e] rounded-2xl max-w-md w-full p-6 shadow-2xl relative">
+        <div className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-hidden">
+          <div className="bg-[#151824] border border-[#242b3e] rounded-2xl max-w-md w-full p-4 sm:p-6 shadow-2xl relative max-h-[92vh] overflow-y-auto">
             <button
               onClick={() => setIsModalOpen(false)}
               className="absolute top-4 right-4 p-1.5 text-gray-400 hover:text-white rounded-lg hover:bg-[#1a1f30]"

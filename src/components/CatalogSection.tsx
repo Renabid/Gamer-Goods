@@ -35,7 +35,7 @@ export function CatalogSection({ categories, products, error }: CatalogSectionPr
       {/* Category filter tabs and search bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-8 border-b border-[#242b3e]">
         <div>
-          <h2 className="text-2xl font-bold text-white flex items-center gap-2">
+          <h2 className="text-xl sm:text-2xl font-bold text-white flex flex-wrap items-center gap-2">
             <span>Available Gaming Products</span>
             <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-violet-950 text-violet-300 border border-violet-800/40">
               {products.length} Games

@@ -1,11 +1,17 @@
 import { NextResponse } from 'next/server'
 import { getSupabaseAdminClient } from '@/lib/supabase/admin'
+import { requireAdminSession } from '@/lib/auth/admin-guard'
 
 /**
  * Admin Product Image Update Route:
  * Updates image_url, thumbnail_url, and banner_url for a product in Supabase.
  */
 export async function PATCH(request: Request) {
+  const auth = await requireAdminSession()
+  if (auth.isUsingLiveDatabase && !auth.isAdmin) {
+    return NextResponse.json({ error: 'Unauthorized: Admin authentication required' }, { status: 403 })
+  }
+
   try {
     const body = await request.json()
     const { id, imageUrl } = body

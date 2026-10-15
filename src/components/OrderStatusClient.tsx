@@ -235,21 +235,21 @@ export function OrderStatusClient({ orderNumber }: { orderNumber: string }) {
             Live Order Checkpoint Pipeline
           </h3>
 
-          <div className="grid grid-cols-3 gap-3 text-center">
+          <div className="grid grid-cols-3 gap-1.5 sm:gap-3 text-center">
             {/* Step 1: Placed */}
-            <div className="space-y-2">
-              <div className="w-9 h-9 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto text-xs font-bold">
+            <div className="space-y-1.5 sm:space-y-2">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 flex items-center justify-center mx-auto text-xs font-bold">
                 <Check className="w-4 h-4" />
               </div>
               <div>
-                <div className="text-xs font-bold text-white">1. Order Placed</div>
-                <div className="text-[11px] text-emerald-400 font-medium">TrxID Submitted</div>
+                <div className="text-[10px] sm:text-xs font-bold text-white leading-tight">1. Order Placed</div>
+                <div className="text-[9px] sm:text-[11px] text-emerald-400 font-medium">TrxID Submitted</div>
               </div>
             </div>
 
             {/* Step 2: Payment Verification */}
-            <div className="space-y-2">
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center mx-auto text-xs font-bold ${
+            <div className="space-y-1.5 sm:space-y-2">
+              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mx-auto text-xs font-bold ${
                 isPaymentVerified
                   ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
                   : isPaymentFailed
@@ -265,22 +265,22 @@ export function OrderStatusClient({ orderNumber }: { orderNumber: string }) {
                 )}
               </div>
               <div>
-                <div className="text-xs font-bold text-white">2. Payment Verification</div>
-                <div className={`text-[11px] font-semibold ${
+                <div className="text-[10px] sm:text-xs font-bold text-white leading-tight">2. Verification</div>
+                <div className={`text-[9px] sm:text-[11px] font-semibold ${
                   isPaymentVerified
                     ? 'text-emerald-400'
                     : isPaymentFailed
                     ? 'text-rose-400'
                     : 'text-amber-300'
                 }`}>
-                  {isPaymentVerified ? 'Verified & Approved' : isPaymentFailed ? 'Payment Rejected' : 'Admin Reviewing'}
+                  {isPaymentVerified ? 'Approved' : isPaymentFailed ? 'Rejected' : 'In Review'}
                 </div>
               </div>
             </div>
 
             {/* Step 3: Fulfillment */}
-            <div className="space-y-2">
-              <div className={`w-9 h-9 rounded-full flex items-center justify-center mx-auto text-xs font-bold ${
+            <div className="space-y-1.5 sm:space-y-2">
+              <div className={`w-8 h-8 sm:w-9 sm:h-9 rounded-full flex items-center justify-center mx-auto text-xs font-bold ${
                 isOrderCompleted
                   ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
                   : isOrderProcessing
@@ -296,15 +296,15 @@ export function OrderStatusClient({ orderNumber }: { orderNumber: string }) {
                 )}
               </div>
               <div>
-                <div className="text-xs font-bold text-white">3. Game Delivery</div>
-                <div className={`text-[11px] font-semibold ${
+                <div className="text-[10px] sm:text-xs font-bold text-white leading-tight">3. Game Delivery</div>
+                <div className={`text-[9px] sm:text-[11px] font-semibold ${
                   isOrderCompleted
                     ? 'text-emerald-400'
                     : isOrderProcessing
                     ? 'text-cyan-300'
                     : 'text-gray-500'
                 }`}>
-                  {isOrderCompleted ? 'Items Credited' : isOrderProcessing ? 'Crediting UID...' : 'Awaiting Payment'}
+                  {isOrderCompleted ? 'Delivered' : isOrderProcessing ? 'Crediting...' : 'Waiting'}
                 </div>
               </div>
             </div>

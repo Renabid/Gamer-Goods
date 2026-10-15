@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { getSupabaseAdminClient } from '@/lib/supabase/admin'
+import { requireAdminSession } from '@/lib/auth/admin-guard'
 
 /**
  * Admin Upload API Route:
@@ -7,6 +8,11 @@ import { getSupabaseAdminClient } from '@/lib/supabase/admin'
  * If Supabase is not configured or in local developer preview, saves to local public/images/products folder.
  */
 export async function POST(request: Request) {
+  const auth = await requireAdminSession()
+  if (auth.isUsingLiveDatabase && !auth.isAdmin) {
+    return NextResponse.json({ error: 'Unauthorized: Admin authentication required' }, { status: 403 })
+  }
+
   try {
     const formData = await request.formData()
     const file = formData.get('file') as File | null

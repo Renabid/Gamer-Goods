@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { formatPoishaToBDT } from '@/lib/currency'
 import type { ProductWithVariants, ProductVariant, PaymentMethod, CustomFieldConfig } from '@/types/database'
@@ -20,11 +20,8 @@ import {
   ChevronRight,
   Loader2,
   CreditCard,
-  Building2,
-  QrCode,
   RefreshCw,
   ExternalLink,
-  Search,
 } from 'lucide-react'
 
 interface ProductDetailClientProps {
@@ -113,6 +110,30 @@ export function ProductDetailClient({
   }
 
   const activeVariants = variants.filter((v) => v.is_active)
+
+  // Auto-prefill customer details from session if logged in
+  useEffect(() => {
+    let ignore = false
+    async function prefillCustomer() {
+      try {
+        const res = await fetch('/api/auth/me')
+        if (res.ok) {
+          const data = await res.json()
+          if (!ignore && data.user) {
+            if (data.user.fullName) setCustomerName((prev) => prev || data.user.fullName)
+            if (data.user.email) setCustomerEmail((prev) => prev || data.user.email)
+            if (data.user.phone) setCustomerPhone((prev) => prev || data.user.phone)
+          }
+        }
+      } catch {
+        // Ignored
+      }
+    }
+    prefillCustomer()
+    return () => {
+      ignore = true
+    }
+  }, [])
 
   const selectedPaymentMethod =
     activePaymentMethods.find((m) => m.id === selectedPaymentMethodId) ||
@@ -552,8 +573,8 @@ export function ProductDetailClient({
 
       {/* Checkout & Payment Modal */}
       {isCheckoutOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 overflow-y-auto">
-          <div className="bg-[#151824] border border-[#242b3e] rounded-2xl max-w-xl w-full p-6 shadow-2xl relative my-8">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-3 sm:p-6 overflow-y-auto">
+          <div className="bg-[#151824] border border-[#242b3e] rounded-2xl max-w-xl w-full p-4 sm:p-6 shadow-2xl relative my-auto max-h-[92vh] overflow-y-auto">
             {orderSuccess ? (
               /* Success / Verification Checkpoint State */
               <div className="py-4 space-y-4">

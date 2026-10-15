@@ -31,14 +31,14 @@ export function HeroBanner({ isUsingLiveDatabase }: { isUsingLiveDatabase: boole
               <span>Next-Gen Gaming Top-Up Platform</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
               Instant In-Game Currencies &amp; Digital Vouchers with{' '}
               <span className="bg-gradient-to-r from-violet-400 via-purple-300 to-cyan-400 bg-clip-text text-transparent">
                 Zero Friction
               </span>
             </h1>
 
-            <p className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl">
+            <p className="mt-4 text-sm sm:text-base lg:text-lg text-gray-300 max-w-2xl">
               Gamer Goods provides secure, automated digital reloads for Free Fire, PUBG Mobile, MLBB, Valorant, and prepaid gaming cards across Bangladesh with transparent BDT pricing.
             </p>
 
@@ -60,7 +60,7 @@ export function HeroBanner({ isUsingLiveDatabase }: { isUsingLiveDatabase: boole
           </div>
 
           {/* Quick value props badges */}
-          <div className="lg:col-span-4 grid grid-cols-2 gap-3" id="features">
+          <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-3" id="features">
             <div className="bg-[#151824]/90 p-3.5 rounded-xl border border-[#242b3e] flex flex-col gap-1.5">
               <div className="w-8 h-8 rounded-lg bg-violet-950 flex items-center justify-center text-violet-400 border border-violet-800/40">
                 <Zap className="w-4 h-4" />

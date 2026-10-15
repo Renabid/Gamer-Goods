@@ -376,10 +376,10 @@ export function AdminOrderManager({ initialOrders }: AdminOrderManagerProps) {
                                 </div>
                               )}
 
-                              <div className="flex justify-between items-center">
+                              <div className="flex flex-wrap sm:flex-nowrap justify-between items-center gap-1">
                                 <span className="text-gray-400">Transaction ID (TrxID):</span>
                                 <div className="flex items-center gap-1.5">
-                                  <span className="font-mono font-bold text-emerald-400 bg-[#0d0f17] px-2 py-0.5 rounded border border-emerald-800/40">
+                                  <span className="font-mono font-bold text-emerald-400 bg-[#0d0f17] px-2 py-0.5 rounded border border-emerald-800/40 break-all text-[11px] sm:text-xs">
                                     {payment.transaction_id || 'N/A'}
                                   </span>
                                   {payment.transaction_id && (

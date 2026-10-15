@@ -16,9 +16,7 @@ import {
   Loader2,
   Smartphone,
   Building2,
-  Settings2,
   X,
-  ExternalLink,
 } from 'lucide-react'
 
 interface AdminPaymentSettingsProps {
@@ -384,7 +382,7 @@ export function AdminPaymentSettings({
             </div>
 
             <form onSubmit={handleSubmit} className="flex flex-col flex-1 overflow-hidden">
-              <div className="p-6 overflow-y-auto space-y-4 text-xs flex-1">
+              <div className="p-4 sm:p-6 overflow-y-auto space-y-4 text-xs flex-1">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block font-semibold text-gray-300 mb-1">
